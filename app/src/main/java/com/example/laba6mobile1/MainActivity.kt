@@ -9,22 +9,36 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
     private val firstFragment = BlankFragment()
     private val secondFragment = SecondFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT){
+
+
+        if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainerView3, firstFragment)
+                .add(R.id.fragmentContainerView, firstFragment)
+                .commit()
+            supportFragmentManager.beginTransaction()
+                .add(R.id.fragmentContainerView2, secondFragment)
                 .commit()
         }
-        else{
+    }
+    fun setAction(action: String, actionCode: Int) {
+        secondFragment.setAction(action, actionCode)
+    }
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainerView,firstFragment)
-                .replace(R.id.fragmentContainerView2, secondFragment)
+                .hide(secondFragment)
+                .commit()
+        } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            supportFragmentManager.beginTransaction()
+                .show(secondFragment)
                 .commit()
         }
     }
