@@ -20,30 +20,6 @@ class BlankFragment : Fragment() {
         val button2 = view.findViewById<Button>(R.id.countButton)
         val button3 = view.findViewById<Button>(R.id.deleteButton)
 
-        button1.setOnClickListener {
-            // Блокируем кнопку
-            button1.isEnabled = false
-            // Передаем выбранное действие во второй фрагмент
-            (activity as MainActivity).setAction("Вывести статистику", 1)
-        }
-
-        button2.setOnClickListener {
-            // Блокируем кнопку
-            button2.isEnabled = false
-            // Передаем выбранное действие во второй фрагмент
-            (activity as MainActivity).setAction("Посчитать слова", 2)
-        }
-
-        button3.setOnClickListener {
-            // Блокируем кнопку
-            button3.isEnabled = false
-            // Передаем выбранное действие во второй фрагмент
-            (activity as MainActivity).setAction("Удалить первое слово", 3)
-        }
-
-
         return view
     }
-
-
 }

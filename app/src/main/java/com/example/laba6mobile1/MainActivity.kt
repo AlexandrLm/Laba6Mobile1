@@ -16,30 +16,16 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
-        if (savedInstanceState == null) {
+        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
             supportFragmentManager.beginTransaction()
-                .add(R.id.fragmentContainerView, firstFragment)
+                .replace(R.id.fragmentContainerView3, firstFragment)
                 .commit()
+        } else {
             supportFragmentManager.beginTransaction()
-                .add(R.id.fragmentContainerView2, secondFragment)
-                .commit()
-        }
-    }
-    fun setAction(action: String, actionCode: Int) {
-        secondFragment.setAction(action, actionCode)
-    }
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            supportFragmentManager.beginTransaction()
-                .hide(secondFragment)
-                .commit()
-        } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            supportFragmentManager.beginTransaction()
-                .show(secondFragment)
+                .replace(R.id.fragmentContainerView, firstFragment)
+                .replace(R.id.fragmentContainerView2, secondFragment)
                 .commit()
         }
+
     }
 }

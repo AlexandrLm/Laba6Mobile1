@@ -11,10 +11,6 @@ import android.widget.EditText
 import android.widget.TextView
 
 class SecondFragment : Fragment() {
-
-
-    private var action = ""
-    private var actionCode: Int = 0
     @SuppressLint("MissingInflatedId", "SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,36 +26,6 @@ class SecondFragment : Fragment() {
 
         btn.isActivated = textForEdit.text.toString() == ""
 
-        actionName.text = action
-
-        btn.setOnClickListener{
-            val inputText = textForEdit.text.toString()
-            when(actionCode){
-
-                1 ->{
-                    val vowelsCount = inputText.count { it in "aeiouyAEIOUY" }
-                    val consonantsCount = inputText.count { it in "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ" }
-                    val otherSymbolsCount = inputText.length - vowelsCount - consonantsCount
-                    resultText.text = "Гласных: $vowelsCount\nСогласных: $consonantsCount\nДругих символов: $otherSymbolsCount"
-                }
-                2 ->{
-                    val wordsCount = inputText.trim().split("\\s+".toRegex()).size
-                    resultText.text = "Количество слов: $wordsCount"
-                }
-                3 ->{
-                    val words = inputText.trim().split("\\s+".toRegex())
-                    if (words.isNotEmpty()) {
-                        val newText = words.drop(1).joinToString(" ")
-                        textForEdit.setText(newText)
-                    }
-                }
-            }
-        }
-
         return view
-    }
-    fun setAction(action: String, actionCode: Int) {
-        this.action = action
-        this.actionCode = actionCode
     }
 }
