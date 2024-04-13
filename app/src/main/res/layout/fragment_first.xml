@@ -26,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/button_selector"
+                android:onClick="buttonClick"
                 android:text="Вывести статистику" />
 
             <Button
@@ -33,6 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/button_selector"
+                android:onClick="buttonClick"
                 android:text="Посчитать слова" />
 
             <Button
@@ -40,6 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/button_selector"
+                android:onClick="buttonClick"
                 android:text="Удалить первое слово" />
         </RadioGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>

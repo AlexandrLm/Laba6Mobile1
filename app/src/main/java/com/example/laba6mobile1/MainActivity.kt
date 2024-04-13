@@ -1,15 +1,11 @@
 package com.example.laba6mobile1
 
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
-import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity(), BlankFragment.OnFragmentSendDataListener{
     private val firstFragment = BlankFragment()
     private val secondFragment = SecondFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,5 +23,18 @@ class MainActivity : AppCompatActivity(){
                 .commit()
         }
 
+    }
+
+    override fun onSendData(data : String) {
+        val fragment: SecondFragment? = supportFragmentManager
+            .findFragmentById(R.id.fragmentContainerView2) as SecondFragment?
+        if (fragment != null && fragment.isVisible) {
+                fragment.setText(data)
+        }
+        else{
+            val intent = Intent(this, SecondActivity::class.java)
+            intent.putExtra("TEXT", data)
+            startActivity(intent)
+        }
     }
 }

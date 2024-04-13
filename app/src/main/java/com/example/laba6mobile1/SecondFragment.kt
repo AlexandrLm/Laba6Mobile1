@@ -28,4 +28,8 @@ class SecondFragment : Fragment() {
 
         return view
     }
+    fun setText(text: String){
+        val view = view?.findViewById<TextView>(R.id.actionNameText)
+        view?.text = text
+    }
 }
