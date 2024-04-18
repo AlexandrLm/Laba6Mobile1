@@ -6,10 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 class SecondActivity : AppCompatActivity() {
-
-    val TEXT_KEY = "TEXT"
     var text = "Данные"
-    private val secondFragment = SecondFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if(resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
@@ -22,12 +19,12 @@ class SecondActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_second)
     }
-
     override fun onResume() {
         super.onResume()
         val fragment: SecondFragment? = supportFragmentManager
-            .findFragmentById(R.id.fragmentContainerView2) as SecondFragment?
+            .findFragmentById(R.id.fragmentContainerView4) as SecondFragment?
         fragment?.setText(text)
-
     }
+
+
 }

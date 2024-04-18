@@ -12,16 +12,16 @@ class MainActivity : AppCompatActivity(), BlankFragment.OnFragmentSendDataListen
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainerView3, firstFragment)
-                .commit()
-        } else {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainerView, firstFragment)
-                .replace(R.id.fragmentContainerView2, secondFragment)
-                .commit()
-        }
+//        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+//            supportFragmentManager.beginTransaction()
+//                .replace(R.id.fragmentContainerView3, firstFragment)
+//                .commit()
+//        } else {
+//            supportFragmentManager.beginTransaction()
+//                .replace(R.id.fragmentContainerView, firstFragment)
+//                .replace(R.id.fragmentContainerView2, secondFragment)
+//                .commit()
+//        }
 
     }
 
